@@ -1,4 +1,4 @@
-import { loadData, dur, health, cors } from './lib.js';
+import { loadData, dur, health, cors } from '../lib/data.js';
 
 export default function handler(req, res) {
   cors(res);

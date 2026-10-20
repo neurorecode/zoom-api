@@ -1,4 +1,4 @@
-import { loadData, dur, cors } from './lib.js';
+import { loadData, dur, cors } from '../lib/data.js';
 export default function handler(req, res) {
   cors(res);
   const meetings = loadData();
