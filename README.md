@@ -31,7 +31,7 @@ and give each deployment its own credentials.
 | `ZOOM_ACCOUNT_ID` | yes | — | Server-to-Server OAuth app |
 | `ZOOM_CLIENT_ID` | yes | — | |
 | `ZOOM_CLIENT_SECRET` | yes | — | |
-| `ZOOM_TZ_OFFSET_MINUTES` | no | `0` | Display timezone. `330` for IST, `-300` for US Eastern |
+| `ZOOM_TIMEZONE` | no | `UTC` | IANA name for the account's timezone, e.g. `Asia/Kolkata`, `America/New_York`, `Europe/London` |
 | `ZOOM_WINDOW_DAYS` | no | `180` | How far back to pull meeting instances |
 | `ZOOM_CACHE_SECONDS` | no | `600` | In-memory cache lifetime |
 | `ZOOM_BACKFILL_BUDGET` | no | `60` | Instances described per request while catching up |
