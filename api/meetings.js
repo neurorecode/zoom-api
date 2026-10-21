@@ -1,8 +1,8 @@
 import { loadData, enrich, cors } from '../lib/data.js';
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   cors(res);
-  const meetings = loadData();
+  const meetings = await loadData();
   const url = new URL(req.url, `http://${req.headers.host}`);
   const search = (url.searchParams.get('search') || '').toLowerCase();
   const status = url.searchParams.get('status') || '';

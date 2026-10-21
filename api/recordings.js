@@ -1,7 +1,7 @@
 import { loadData, dur, health, cors } from '../lib/data.js';
-export default function handler(req, res) {
+export default async function handler(req, res) {
   cors(res);
-  const meetings = loadData();
+  const meetings = await loadData();
   const recs = meetings.map((m, idx) => {
     if (!m.summary_content) return null;
     return {

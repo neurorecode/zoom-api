@@ -1,8 +1,8 @@
 import { loadData, dur, health, cors } from '../lib/data.js';
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   cors(res);
-  const meetings = loadData();
+  const meetings = await loadData();
   const enriched = meetings.map(m => {
     const d = dur(m.meeting_start_time, m.meeting_end_time);
     const h = health(m);
