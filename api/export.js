@@ -1,7 +1,9 @@
-import { loadData, dur, health, cors } from '../lib/data.js';
+import { getMeetings } from '../lib/meetings.js';
+import { cors } from '../lib/http.js';
+import { dur, health } from '../lib/metrics.js';
 export default async function handler(req, res) {
   cors(res);
-  const meetings = await loadData();
+  const meetings = await getMeetings();
   const rows = meetings.map(m => {
     const d = dur(m.meeting_start_time, m.meeting_end_time);
     const h = health(m);
