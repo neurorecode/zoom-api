@@ -25,8 +25,18 @@ export default async function handler(req, res) {
       .catch(e => ({ error: String(e.message || e) }));
   }
 
+  // Vercel's system env vars identify the build actually serving this request,
+  // so a stale deployment is obvious instead of being guessed at.
+  const deployment = {
+    commit: (process.env.VERCEL_GIT_COMMIT_SHA || '').slice(0, 7) || 'unknown',
+    commit_message: process.env.VERCEL_GIT_COMMIT_MESSAGE || null,
+    branch: process.env.VERCEL_GIT_COMMIT_REF || null,
+    env: process.env.VERCEL_ENV || 'local',
+  };
+
   res.json({
     ok: true,
+    deployment,
     scopes,
     zoom_configured: status.configured,
     source: status.configured ? (status.last_error ? 'snapshot (zoom error)' : 'snapshot + live') : 'snapshot only',
